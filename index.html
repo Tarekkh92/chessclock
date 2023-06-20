@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
- <meta charset="UTF-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chess Clock</title>
   <meta name="description" content="Chess Clock is an online timer for chess games. It allows players to manage their time during chess matches.">
@@ -11,16 +11,15 @@
   <meta name="googlebot" content="index, follow">
   <meta property="og:title" content="Chess Clock">
   <meta property="og:description" content="Chess Clock is an online timer for chess games. It allows players to manage their time during chess matches.">
-  <meta property="og:image" content="https://chessclock.fardos.dev">
-  <meta property="og:url" content="https://chessclock.fardos.dev">
+  <meta property="og:image" content="https://example.com/your-image.jpg">
+  <meta property="og:url" content="https://example.com">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Chess Clock">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Chess Clock">
   <meta name="twitter:description" content="Chess Clock is an online timer for chess games. It allows players to manage their time during chess matches.">
-  <meta name="twitter:image" content="https://chessclock.fardos.dev">
-  <link rel="canonical" href="https://chessclock.fardos.dev">
-  <title>Chess Clock</title>
+  <meta name="twitter:image" content="https://example.com/your-image.jpg">
+  <link rel="canonical" href="https://example.com">
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -40,16 +39,22 @@
     .clock {
       display: flex;
       justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      align-items: center;
     }
 
     .timer {
-      display: inline-block;
       font-size: 60px;
-      margin: 0 30px;
       color: #333333;
     }
 
     .controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
       margin-top: 20px;
     }
 
@@ -61,22 +66,25 @@
       color: #ffffff;
       border: none;
       cursor: pointer;
+      flex-basis: 100%;
     }
-    
 
     button:hover {
       background-color: #555555;
     }
-    .p1{
-       background-color: green;
+
+    .p1 {
+      background-color: green;
     }
-    .p2{
-       background-color: #ADD8E6;
-    
+
+    .p2 {
+      background-color: #ADD8E6;
     }
-    .reset{
+
+    .reset {
       background-color: red;
     }
+
     button:focus {
       outline: none;
     }
@@ -92,6 +100,18 @@
 
     input[type="number"]:disabled {
       background-color: #f5f5f5;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .timer {
+        font-size: 40px;
+      }
+
+      .controls {
+        flex-direction: column;
+        align-items: center;
+      }
     }
   </style>
 
@@ -109,14 +129,20 @@
     </div>
     <div class="controls">
       <input type="number" id="countdownDuration" min="1" value="5" ${seconds1 || seconds2 ? 'disabled' : ''}> minutes
-      <button  class="p1" onclick="startTimer(1)">Start Player 1</button>
-      <button class="p2"  onclick="startTimer(2)">Start Player 2</button>
-      <button class="reset" onclick="resetTimer()">Reset</button>
+      <div>
+        <button class="p1" onclick="startTimer(1)">Start Player 1</button>
+      </div>
+      <div>
+        <button class="p2" onclick="startTimer(2)">Start Player 2</button>
+      </div>
+      <div>
+        <button class="reset" onclick="resetTimer()">Reset</button>
+      </div>
     </div>
   </div>
 
   <script>
-    let timer1, timer2;
+ let timer1, timer2;
     let seconds1, seconds2;
     let initialSeconds = 5 * 60; // Initial countdown time for both players (5 minutes)
 
@@ -180,6 +206,7 @@
     function formatTime(time) {
       return time.toString().padStart(2, "0");
     }
+
   </script>
 </body>
 </html>
