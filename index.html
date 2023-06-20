@@ -140,8 +140,12 @@
       </div>
     </div>
   </div>
-
+  <footer style="text-align: center; margin-top: 20px;">
+    <p>   All Rights Reserved <a href="https://fardos.dev/">Fardos.dev</a> <span id="currentYear"></span> &copy;</p>
+  </footer>
   <script>
+       const currentYear = new Date().getFullYear();
+    document.getElementById("currentYear").textContent = currentYear; 
  let timer1, timer2;
     let seconds1, seconds2;
     let initialSeconds = 5 * 60; // Initial countdown time for both players (5 minutes)
